@@ -1,0 +1,36 @@
+/*reset space */
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+    background-color: rgb(188, 209, 243);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /*mengatur posisi secara vertical */
+}
+header ul{
+    list-style: none;
+    display: flex; /* membuaat ul menjadi flex container  */
+    flex-direction: row;
+    
+    
+
+}
+header ul li{
+    margin: 0 1em;
+    
+    
+}
+header ul li a {
+    text-decoration: none;
+
+}
+h2{
+    margin: 20px;
+}
+.majors{
+    margin-left: 70px;
+    font-size: 18px;
+}
