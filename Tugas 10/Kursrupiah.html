@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Dolar Ke Rupiah</title>
+</head>
+
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <fieldset style="width: 50%; height: 50%;">
+    <div style="text-align: center;">
+    <h1 style="background-color:green; text-align: center  ; color: azure; ">Program Konversi Dolar Ke Rupiah</h1>
+    <label for="Dolar">Jumlah Dolar</label>
+    <input type="number" id="Dolar" onchange="hitungrupiah()">
+
+    <hr>
+    <p> Rupiah = <span id="Rupiah"></span></p>
+
+    <script>
+        function hitungrupiah(){
+            let Dolar = document.getElementById("Dolar").value;
+
+            //Rumus Menghitung Dolar ke Rupiah
+            let Rupiah = Dolar * 14650
+            console.log("Rupiah = " + Rupiah);
+
+            let Rupiah2 = document.getElementById("Rupiah");
+            Rupiah2.innerText = "Rp. " + Rupiah;
+
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>

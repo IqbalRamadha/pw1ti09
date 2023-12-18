@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menjumlah Bilangan</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <fieldset style="width: 50%; height: 50%;">
+    <div style="text-align: center;">
+    <h1 style="background-color:yellow; text-align: center  ; color: black; ">Program Penjumlahan Bilangan</h1>
+    <input type="number" id="a" onchange="hitung()"> </input>
+    <h4>+</h4>
+    <input type="number" id="b" onchange="hitung()"> </input>
+    <h4>=</h4>
+    <input type="number" id="hasil"></input>
+</div>
+</fieldset>
+    
+   <script>
+    function hitung(){
+        let bilangan1 = parseInt(document.getElementById("a").value);
+        let bilangan2 = parseInt(document.getElementById("b").value);
+
+        let hasil = bilangan1 + bilangan2;
+        console.log(bilangan1 + " + " + bilangan2 + " = " + hasil);
+
+        let hasil2 = document.getElementById("hasil");
+            hasil2.value = hasil;
+    }
+   </script>
+</body>
+</html>
