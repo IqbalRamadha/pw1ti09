@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox</title>
+</head>
+
+<body>
+    <div style="border:  1px solid black; width: 200px;">
+        <div style="height : 200px;" id="chatBox"></div>
+
+        <div style="display: flex;">
+            <input type="text" id="chat">
+            <button id="chat" onclick="send()">Kirim</button>
+        </div>
+    </div>
+
+    <script>
+        function send() {
+            let chatBox = document.getElementById('chatBox')
+            let chat = document.getElementById('chat')
+
+            // validasi input
+            if(chat.value)
+
+            //isi chatBox  yang dimasukkan oleh user
+            chatBox.innerHTML += chat.value + "<br>"
+
+            //hapus text pada kolom input chat
+
+            chat.value = ''
+
+        }
+    </script>
+</body>
+
+</html>
