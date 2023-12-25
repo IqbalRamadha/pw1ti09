@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurs Rupiah</title>
+    <style>
+        table {
+            margin: 0 auto;
+        }
+
+        fieldset {
+            width: 500px;
+            height: 110px;
+            margin: 0 auto;
+            background-color: aliceblue;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: lightcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Kurs Rupiah - Mata Asing</legend>
+        <table border="3" cellspacing="0" cellpadding="10" class="container">
+            <tr>
+                <th>
+                    Masukkan Nilai
+                </th>
+                <th>
+                    Valas
+                </th>
+                <th>
+                    Nilai Rupiah
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" id="nilai" onchange="hitung()"></input>
+                </td>
+                <td>
+                    <select name="" id="valas" onchange="hitung()">
+                        <option value="dollarUS">Dollar US</option>
+                        <option value="dollarSingapore">Dollar Singapore</option>
+                        <option value="ringgit">Ringgit Malaysia</option>
+                        <option value="yen">Yen Jepang</option>
+                        <option value="euro">Euro</option>
+                        <option value="riyal">Riyal Arab Saudi</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="rupiah" id="hasil" onchange="hitung()"></input>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <script>
+        function hitung() {
+            let nilai = parseInt(document.getElementById("nilai").value);
+            let valas = document.getElementById("valas").value;
+
+            console.log(nilai);
+            console.log(valas);
+
+            let total = 0;
+            if (valas == "dollarUS") {
+                total = nilai * 15466;
+            } else if (valas == "dollarSingapore") {
+                total = nilai * 11673;
+            } else if (valas == "ringgit") {
+                total = nilai * 3332;
+            } else if (valas == "yen") {
+                total = nilai * 108.62;
+            } else if (valas == "euro") {
+                total = nilai * 17054;
+            } else if (valas == "riyal") {
+                total = nilai * 4123;
+            }
+            let hasil = document.getElementById("hasil");
+            hasil.value = total;
+        }
+    </script>
+</body>
+
+</html>

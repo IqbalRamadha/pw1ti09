@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            border: solid 1px;
+            border-radius: 10px;
+            background-color: lightcyan;
+            padding: 20px;
+            width: 300px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            border-radius: 5px;
+            background-color: rgb(50, 247, 50)
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Form Keberangkatan</h2>
+
+    <div class="main">
+        <form id="bookingForm">
+            <label for="namaPelanggan">Nama Pelanggan:</label>
+            <input type="text" id="namaPelanggan" name="namaPelanggan" maxlength="30" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="jamKeberangkatan">Jam Keberangkatan:</label>
+            <input type="text" id="jamKeberangkatan" name="jamKeberangkatan" placeholder="Format: 00.00 - 23.59"
+                required>
+            <br>
+            <label for="tujuanKeberangkatan">Tujuan Keberangkatan:</label>
+            <input type="text" id="tujuanKeberangkatan" name="tujuanKeberangkatan" required>
+            <br>
+            <label for="jumlahTiket">Jumlah Tiket:</label>
+            <input type="number" id="jumlahTiket" name="jumlahTiket" min="1" max="10" required>
+            <br>
+            <button type="button" onclick="validateForm()">Submit</button>
+            <!-- Untuk menampilkan pesan kesalahan -->
+            <div id="errorMessages" class="error"></div>
+
+            <div id="result" style="display: none;">
+                <p>--------------------------------------------------------</p>
+                <h2>Berhasil!</h2>
+                <h3>Detail Pemesanan:</h3>
+                <p id="resultNamaPelanggan"></p>
+                <p id="resultEmail"></p>
+                <p id="resultJamKeberangkatan"></p>
+                <p id="resultTujuanKeberangkatan"></p>
+                <p id="resultJumlahTiket"></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Mengatur kembali pesan kesalahan
+            document.getElementById('errorMessages').innerHTML = '';
+
+            // Mendapatkan nilai formulir
+            var namaPelanggan = document.getElementById('namaPelanggan').value;
+            var email = document.getElementById('email').value;
+            var jamKeberangkatan = document.getElementById('jamKeberangkatan').value;
+            var tujuanKeberangkatan = document.getElementById('tujuanKeberangkatan').value;
+            var jumlahTiket = document.getElementById('jumlahTiket').value;
+
+            // Validation check
+            var isValid = true;
+            var errorMessages = '';
+
+            if (namaPelanggan.length === 0 || namaPelanggan.length > 30) {
+                isValid = false;
+                errorMessages += 'Nama Pelanggan harus diisi dan maksimum 30 karakter.\n';
+                document.getElementById('namaPelanggan').style.borderColor = 'red';
+            } else {
+                document.getElementById('namaPelanggan').style.borderColor = '';
+            }
+
+            if (!isValidEmail(email)) {
+                isValid = false;
+                errorMessages += 'Email tidak valid.\n';
+                document.getElementById('email').style.borderColor = 'red';
+            } else {
+                document.getElementById('email').style.borderColor = '';
+            }
+
+            if (!isValidJamKeberangkatan(jamKeberangkatan)) {
+                isValid = false;
+                errorMessages += 'Format Jam Keberangkatan tidak valid (00.00 - 23.59).\n';
+                document.getElementById('jamKeberangkatan').style.borderColor = 'red';
+            } else {
+                document.getElementById('jamKeberangkatan').style.borderColor = '';
+            }
+
+            if (tujuanKeberangkatan.length === 0) {
+                isValid = false;
+                errorMessages += 'Tujuan Keberangkatan harus diisi.\n';
+                document.getElementById('tujuanKeberangkatan').style.borderColor = 'red';
+            } else {
+                document.getElementById('tujuanKeberangkatan').style.borderColor = '';
+            }
+
+            if (jumlahTiket < 1 || jumlahTiket > 10) {
+                isValid = false;
+                errorMessages += 'Jumlah Tiket harus diisi dan antara 1-10.\n';
+                document.getElementById('jumlahTiket').style.borderColor = 'red';
+            } else {
+                document.getElementById('jumlahTiket').style.borderColor = '';
+            }
+
+            // Menampilkan pesan kesalahan atau menampilkan hasil
+            if (isValid) {
+                displayResult(namaPelanggan, email, jamKeberangkatan, tujuanKeberangkatan, jumlahTiket);
+            } else {
+                document.getElementById('errorMessages').innerHTML = errorMessages;
+            }
+        }
+
+        function isValidEmail(email) {
+            // Validasi email sederhana menggunakan ekspresi reguler
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidJamKeberangkatan(jam) {
+            // Validasi waktu sederhana menggunakan ekspresi reguler
+            var jamRegex = /^(0[0-9]|1[0-9]|2[0-3])\.[0-5][0-9]$/;
+            return jamRegex.test(jam);
+        }
+
+        function displayResult(namaPelanggan, email, jamKeberangkatan, tujuanKeberangkatan, jumlahTiket) {
+            // Display the result below the form
+            document.getElementById('resultNamaPelanggan').innerText = 'Nama Pelanggan: ' + namaPelanggan;
+            document.getElementById('resultEmail').innerText = 'Email: ' + email;
+            document.getElementById('resultJamKeberangkatan').innerText = 'Jam Keberangkatan: ' + jamKeberangkatan;
+            document.getElementById('resultTujuanKeberangkatan').innerText = 'Tujuan Keberangkatan: ' + tujuanKeberangkatan;
+            document.getElementById('resultJumlahTiket').innerText = 'Jumlah Tiket: ' + jumlahTiket;
+
+            // Show the result and hide the form
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+
+</body>
+
+</html>

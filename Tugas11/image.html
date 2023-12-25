@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Picker</title>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        img {
+            display: none;
+            max-width: 600px;
+            max-height: 600px;
+            margin-top: 10px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <select name="" id="imagePicker" onchange="tampilgambar()">
+            <option value="satu">satu</option>
+            <option value="dua">dua</option>
+            <option value="tiga">tiga</option>
+            <option value="empat">empat</option>
+            <option value="lima">lima</option>
+            <option value="enam">enam</option>
+        </select>
+        <img id="tampilan" src="#" alt="Preview">
+    </div>
+
+    <script>
+        function tampilgambar() {
+            const imagePicker = document.getElementById('imagePicker');
+            const select = imagePicker.value;
+            const tampilan = document.getElementById('tampilan');
+            const fotosatu = select + ".jpg";
+            const fotodua = select + ".jpg";
+            const fototiga = select + ".jpg";
+            const fotoempat = select + ".jpg";
+            const fotolima = select + ".jpg";
+            const fotoenam = select + ".jpg";
+
+            let foto = 0;
+            if (select == "satu") {
+                tampilan.src = "https://c4.wallpaperflare.com/wallpaper/502/598/565/leon-kennedy-leon-s-kennedy-resident-evil-resident-evil-4-remake-capcom-hd-wallpaper-preview.jpg";
+                tampilan.style.display = 'block';
+                alert("Anda memilih: " + fotosatu);
+            } else if (select == "dua") {
+                tampilan.src = "https://c4.wallpaperflare.com/wallpaper/660/55/756/leon-s-kennedy-resident-evil-resident-evil-4-remake-hd-wallpaper-preview.jpg";
+                tampilan.style.display = 'block';
+                alert("Anda memilih: " + fotodua);
+            } else if (select == "tiga") {
+                tampilan.src = "https://c4.wallpaperflare.com/wallpaper/268/380/4/leon-kennedy-resident-evil-4-remake-hd-wallpaper-preview.jpg";
+                tampilan.style.display = 'block';
+                alert("Anda memilih: " + fototiga);
+            } else if (select == "empat") {
+                tampilan.src = "https://c4.wallpaperflare.com/wallpaper/633/829/80/resident-evil-4-remake-leon-kennedy-hd-wallpaper-preview.jpg";
+                tampilan.style.display = 'block';
+                alert("Anda memilih: " + fotoempat);
+            } else if (select == "lima") {
+                tampilan.src = "https://c4.wallpaperflare.com/wallpaper/633/829/80/resident-evil-4-remake-leon-kennedy-hd-wallpaper-preview.jpg";
+                tampilan.style.display = 'block';
+                alert("Anda memilih: " + fotolima);
+            } else if (select == "enam") {
+                tampilan.src = "https://c4.wallpaperflare.com/wallpaper/668/38/486/resident-evil-4-resident-evil-4-remake-leon-kennedy-ashley-allen-hd-wallpaper-preview.jpg";
+                tampilan.style.display = 'block';
+                alert("Anda memilih: " + fotoenam);
+            }
+        }
+    </script>
+</body>
+
+</html>
